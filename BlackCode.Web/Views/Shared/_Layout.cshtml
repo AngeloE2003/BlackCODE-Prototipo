@@ -1,50 +1,38 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BlackCode.Web</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/BlackCode.Web.styles.css" asp-append-version="true" />
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="BlackCODE. Accesorios de acero para expresar tu identidad." />
+<title>@ViewData["Title"] · BlackCODE</title>
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/marca.css" asp-append-version="true" />
+@await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BlackCode.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - BlackCode.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
+<div class="announcement">ACERO INOXIDABLE. CARÁCTER PROPIO. <span>ENVÍO GRATIS DESDE S/ 199</span></div>
+<header class="header">
+<a class="logo brand" asp-controller="Home" asp-action="Index" aria-label="BlackCODE, inicio"><partial name="_Marca" /></a>
+<nav class="main-nav" aria-label="Navegación principal">
+<a asp-controller="Home" asp-action="Index">Inicio</a>
+<div class="nav-dropdown"><a asp-controller="Catalogo" asp-action="Index">Colecciones <span aria-hidden="true">⌄</span></a>
+<div class="dropdown-panel"><a href="/Catalogo?Buscar=anillo">Anillos</a><a href="/Catalogo?Buscar=cadena">Cadenas</a><a href="/Catalogo?Buscar=pulsera">Pulseras</a><a href="/Catalogo">Ver todo ↗</a></div></div>
+<a href="/Catalogo?Orden=relevancia">Destacados</a><a href="/#nosotros">Nuestra esencia</a>
+</nav>
+<div class="header-tools">
+<button type="button" class="icon-button" data-search-toggle aria-label="Abrir búsqueda" aria-expanded="false"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
+<a class="icon-button" href="@(User.Identity?.IsAuthenticated == true ? "/Pedidos" : "/Cuenta/Login")" aria-label="Mi cuenta"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 22v-3a8 8 0 0 1 16 0v3"/></svg></a>
+<a class="icon-button" asp-controller="Carrito" asp-action="Index" aria-label="Carrito de compras"><svg viewBox="0 0 24 24"><path d="M4 7h16l1 15H3L4 7Z"/><path d="M8 8V5a4 4 0 0 1 8 0v3"/></svg></a>
+</div>
+</header>
+<form class="search-bar" action="/Catalogo" method="get" hidden data-search><label class="sr-only" for="global-search">Buscar productos</label><input id="global-search" name="Buscar" placeholder="¿Qué estás buscando?" maxlength="100" /><button>Buscar →</button></form>
+@if(User.Identity?.IsAuthenticated == true) {
+<div class="session-bar"><span>Hola, @User.Identity.Name</span><div><a href="/Pedidos">Mis pedidos</a>@if(User.IsInRole("Admin")){<a href="/Admin">Administración</a>}<form asp-controller="Cuenta" asp-action="Logout" method="post"><button class="text-button">Cerrar sesión</button></form></div></div>
+}
+@if(TempData["Exito"] is string exito){<div class="notice success" role="status">@exito</div>}
+@if(TempData["Error"] is string error){<div class="notice error" role="alert">@error</div>}
+<main id="contenido">@RenderBody()</main>
+<section class="benefits"><div>↗ <strong>Envíos a todo el Perú</strong><span>Directo a tu puerta</span></div><div>◇ <strong>Acero inoxidable</strong><span>Diseñado para acompañarte</span></div><div>◎ <strong>Atención cercana</strong><span>En cada paso de tu compra</span></div></section>
+<footer><div><a class="logo brand" href="/"><partial name="_Marca" /></a><p>Tu estilo no necesita permiso.</p><small>Empresa ficticia · Proyecto académico</small></div><div><h3>Explora</h3><a href="/Catalogo">Colecciones</a><a href="/Carrito">Mi carrito</a><a href="/Pedidos">Mis pedidos</a></div><div><h3>Información</h3><a href="/#nosotros">Nuestra esencia</a><a href="/Home/Privacy">Privacidad y términos</a><p>Perú · Precios en soles</p></div><div class="footer-bottom">© @DateTime.UtcNow.Year BlackCODE <span>Todos los pagos de este prototipo son simulados.</span></div></footer>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body></html>
