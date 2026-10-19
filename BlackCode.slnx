@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="BlackCode.Application/BlackCode.Application.csproj" />
+  <Project Path="BlackCode.Domain/BlackCode.Domain.csproj" />
+  <Project Path="BlackCode.Infrastructure/BlackCode.Infrastructure.csproj" />
+  <Project Path="BlackCode.Tests/BlackCode.Tests.csproj" />
+  <Project Path="BlackCode.Web/BlackCode.Web.csproj" />
+</Solution>
