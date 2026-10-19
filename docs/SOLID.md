@@ -63,3 +63,12 @@ introducido repositorios duplicados ni controladores que accedan directamente al
 En autenticación solo se ofrece correo/contraseña en la interfaz actual. La extensión está implementada
 y probada; no se simula una integración con Google o un proveedor externo inexistente.
 Las dos opciones de pago son simuladas. Las notificaciones son mensajes en la pantalla.
+
+### Presentación de la marca
+
+| Principio | Archivo | Qué demuestra | Autor |
+|---|---|---|---|
+| SRP | `BlackCode.Web/Views/Shared/_Marca.cshtml` | Centraliza únicamente la representación de la marca; las variantes de contraste se resuelven en `wwwroot/css/marca.css`, sin añadir reglas de negocio a las vistas. | Angelo |
+
+La incorporación de fotografías y logos no cambia servicios, contratos ni persistencia.
+OCP y DIP conservan las implementaciones y pruebas descritas en las secciones anteriores.

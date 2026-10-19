@@ -5,6 +5,7 @@ Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) · Versiona
 ## [Sin publicar]
 
 ### Agregado
+- Fotografías editoriales y emblemas originales de marca con variantes para fondos claros y oscuros.
 - Prototipo independiente de los cinco módulos: cuentas, catálogo, carrito, pedidos/pago simulado y administración.
 - Carrito de invitados y fusión al iniciar sesión; control de stock y operaciones de compra transaccionales.
 - Interfaz en español con navbar fijo, submenús, filtros a la izquierda y vistas móviles.

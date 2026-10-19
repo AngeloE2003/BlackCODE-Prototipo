@@ -5,12 +5,13 @@
 <meta name="description" content="BlackCODE. Accesorios de acero para expresar tu identidad." />
 <title>@ViewData["Title"] · BlackCODE</title>
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/marca.css" asp-append-version="true" />
 @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
 <div class="announcement">ACERO INOXIDABLE. CARÁCTER PROPIO. <span>ENVÍO GRATIS DESDE S/ 199</span></div>
 <header class="header">
-<a class="logo" asp-controller="Home" asp-action="Index" aria-label="BlackCODE, inicio">Black<span>CODE</span><sup>®</sup></a>
+<a class="logo brand" asp-controller="Home" asp-action="Index" aria-label="BlackCODE, inicio"><partial name="_Marca" /></a>
 <nav class="main-nav" aria-label="Navegación principal">
 <a asp-controller="Home" asp-action="Index">Inicio</a>
 <div class="nav-dropdown"><a asp-controller="Catalogo" asp-action="Index">Colecciones <span aria-hidden="true">⌄</span></a>
@@ -31,7 +32,7 @@
 @if(TempData["Error"] is string error){<div class="notice error" role="alert">@error</div>}
 <main id="contenido">@RenderBody()</main>
 <section class="benefits"><div>↗ <strong>Envíos a todo el Perú</strong><span>Directo a tu puerta</span></div><div>◇ <strong>Acero inoxidable</strong><span>Diseñado para acompañarte</span></div><div>◎ <strong>Atención cercana</strong><span>En cada paso de tu compra</span></div></section>
-<footer><div><a class="logo" href="/">Black<span>CODE</span><sup>®</sup></a><p>Tu estilo no necesita permiso.</p><small>Empresa ficticia · Proyecto académico</small></div><div><h3>Explora</h3><a href="/Catalogo">Colecciones</a><a href="/Carrito">Mi carrito</a><a href="/Pedidos">Mis pedidos</a></div><div><h3>Información</h3><a href="/#nosotros">Nuestra esencia</a><a href="/Home/Privacy">Privacidad y términos</a><p>Perú · Precios en soles</p></div><div class="footer-bottom">© @DateTime.UtcNow.Year BlackCODE <span>Todos los pagos de este prototipo son simulados.</span></div></footer>
+<footer><div><a class="logo brand" href="/"><partial name="_Marca" /></a><p>Tu estilo no necesita permiso.</p><small>Empresa ficticia · Proyecto académico</small></div><div><h3>Explora</h3><a href="/Catalogo">Colecciones</a><a href="/Carrito">Mi carrito</a><a href="/Pedidos">Mis pedidos</a></div><div><h3>Información</h3><a href="/#nosotros">Nuestra esencia</a><a href="/Home/Privacy">Privacidad y términos</a><p>Perú · Precios en soles</p></div><div class="footer-bottom">© @DateTime.UtcNow.Year BlackCODE <span>Todos los pagos de este prototipo son simulados.</span></div></footer>
 <script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
 </body></html>

@@ -51,3 +51,19 @@ Consulta su README; usan variables de entorno para recibir credenciales y deben 
 - El CRUD permite crear productos con una variante y editar las variantes ya existentes. Un editor para añadir o quitar tallas a productos existentes queda fuera de este prototipo.
 - No se modificaron ni se añadieron migraciones. Se conservó InitialSchema.
 - No se ha publicado la aplicación en un servidor público; GitHub contiene el código.
+# Actualización de identidad visual
+
+Se incorporaron dos fotografías editoriales y las versiones blanca y negra del emblema
+proporcionadas para BlackCODE. Se conservaron los archivos originales y su transparencia.
+La marca se presenta desde `_Marca.cshtml`; `marca.css` selecciona el contraste según el fondo.
+
+Verificación de esta actualización:
+- `dotnet build BlackCode.slnx --no-restore`: 0 errores y 0 advertencias.
+- `dotnet test BlackCode.slnx --no-build --no-restore`: 28 pruebas aprobadas.
+- Navegador: inicio, login, registro, catálogo y carrito responden correctamente; imágenes locales
+  cargadas y contraste del logo comprobado. Inicio, login y catálogo sin desbordamiento a 390 px.
+- Capturas: `capturas/marca-inicio.png`, `capturas/marca-login.png` y `capturas/marca-movil.png`.
+
+Esta actualización incorpora los recursos de marca; no representa una reproducción verificada
+del archivo de Figma. La comparación detallada de sus pantallas sigue pendiente.
+
