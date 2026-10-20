@@ -5,6 +5,7 @@ Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) · Versiona
 ## [Sin publicar]
 
 ### Agregado
+- Adaptación visual a las capturas: portada horizontal, colecciones, pie oscuro, acceso con foto a la derecha y navegación lateral administrativa.
 - Fotografías editoriales y emblemas originales de marca con variantes para fondos claros y oscuros.
 - Prototipo independiente de los cinco módulos: cuentas, catálogo, carrito, pedidos/pago simulado y administración.
 - Carrito de invitados y fusión al iniciar sesión; control de stock y operaciones de compra transaccionales.
